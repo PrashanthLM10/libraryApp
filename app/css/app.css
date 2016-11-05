@@ -1,0 +1,48 @@
+/* app css stylesheet */
+
+.appCover {
+  background-image: url('../img/App_Cover_4.jpg');
+  background-size: cover;
+  position : fixed;
+  top :0px;
+  left:0px;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.appName{
+  margin : 6rem 6rem 0rem 4rem;
+  color: white;
+  text-align : center;
+  font : 1px;
+}
+
+.appName h3{
+  margin : 0px 0px 0px 0px;
+  padding :2rem 0px 1rem 0px;
+  font-size : 35px;
+}
+
+.appBtn{
+   border : 1px solid white;
+   bottom : 20rem;
+   left : 59rem;
+   position : fixed;
+   padding : 1rem 2rem 1rem 2rem;
+   color : white;
+   text-align :center;
+}
+.appBtn:hover{
+   border : 3px solid white;
+   cursor: pointer;
+}
+
+.appBtn:hover #fwd{
+    font-weight : bold;
+    font-size:18px;
+}
+
+.container1 {
+  padding : 0px 0px 0px 0px;
+  margin : 0px 0px 0px 0px;
+}
