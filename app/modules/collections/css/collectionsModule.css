@@ -1,0 +1,60 @@
+
+
+.appHeading-top{
+    background-image: url('../../../img/App_menu_1.jpg');
+    background-repeat: no-repeat;
+  background-size: cover;
+    height: 8.6rem;
+}
+.appHeading{
+    position:fixed;
+    top:0px;
+    background-color: rgba(0,0,0,0.4);
+    min-width: 100%;
+    font-family :Futura, "Trebuchet MS", Arial, sans-serif;
+}
+
+.appTitle{
+    color:white;
+    float:left;
+    padding-left:2rem;
+    opacity:1;
+    cursor:pointer;
+}
+
+.appTitle span{
+    float:left;
+    font-size:20px;
+    padding:25px 0px 0px 10px;
+    width:50%;
+    opacity:1;
+}
+.appTitle h1{
+    display: table-cell; 
+    vertical-align: middle; 
+    float:left;
+    font-size:60px;
+    margin : 0px 0px 0px 0px;
+    padding : 1rem 0rem 1rem 0rem;
+    opacity:1;
+}
+.appMenu ul{
+    list-style-type:none;
+    float:right;    
+    margin: 60px 12rem 0rem 0rem;
+    cursor:pointer;
+}
+
+.appMenu li{    
+    display:inline-block;
+    color:white;    
+    font-size: 16px;
+    font-weight:bold;
+    padding: 0px 20px 0px 20px;
+    text-align: center;
+}
+
+.appMenu li:hover{
+    border-bottom: 2px solid white;
+    font-weight: bold;
+}
