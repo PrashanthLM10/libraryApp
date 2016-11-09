@@ -9,6 +9,8 @@ var util = require('util'),
 
 var DEFAULT_PORT = 9898;
 
+
+
 function main(argv) {
   new HttpServer({
     'GET': createServlet(StaticServlet),
@@ -53,7 +55,12 @@ HttpServer.prototype.parseUrl_ = function(urlString) {
 
 HttpServer.prototype.handleRequest_ = function(req, res) {
   if(appUrls.indexOf(req.url) > -1){
-    res.send(200,sendResponseToCall());
+    res.writeHead(200,{
+      'Content-Type': 'application/json'
+    });
+    console.log("===============================================",sendResponseToCall('/collections'));
+    res.write(JSON.stringify(sendResponseToCall('/collections')));
+    res.end();
   }else{
     var logEntry = req.method + ' ' + req.url;
     if (req.headers['user-agent']) {
@@ -247,10 +254,12 @@ StaticServlet.prototype.writeDirectoryIndex_ = function(req, res, path, files) {
   res.end();
 };
 
+
+
 //Response to app urls
 function sendResponseToCall(url){
   switch(url){
-    case "/collections" :
+    case "/collections" :;
       return sendBookCollections();
       break;
 
@@ -258,7 +267,29 @@ function sendResponseToCall(url){
 }
 
 function sendBookCollections(){
-    return {};
+
+    return [{
+        Category : 'Engineering',
+        image : '../../img/industry.gif'
+    },{
+        Category : 'Education',
+        image : '../../img/the-book-o.gif'
+    },{
+        Category : 'Fiction',
+        image : '../../img/fiction.gif'
+    },{
+        Category : 'Psychology',
+        image : '../../img/LittleWheel-Crane.gif'
+    },{
+        Category : 'Sports',
+        image : '../../img/LittleWheel-Crane.gif'
+    },{
+        Category : 'Medicine',
+        image : '../../img/LittleWheel-Crane.gif'
+    },{
+        Category : 'Law',
+        image : '../../img/LittleWheel-Crane.gif'
+    }];
 }
 
 
