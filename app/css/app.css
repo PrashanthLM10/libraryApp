@@ -1,5 +1,13 @@
 /* app css stylesheet */
 
+html,body{
+    height : 100%;
+    width : 100%;
+}
+.view{
+    height : 100%;
+    width: 100%;
+}
 .appCover {
   background-image: url('../img/App_Cover_4.jpg');
   background-size: cover;

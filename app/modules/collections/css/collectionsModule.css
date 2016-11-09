@@ -1,14 +1,22 @@
+.nestedView{
+    height : 76%;
+    width : 100%;
+    top: 14%;
+    position: relative;
+    overflow: auto;
+}
 
 
 .appHeading-top{
     background-image: url('../../../img/App_menu_1.jpg');
     background-repeat: no-repeat;
-  background-size: cover;
-    height: 8.6rem;
+    background-size: cover;
+    height: 14%;
+    width:100%;
+    position:fixed;
 }
 .appHeading{
-    position:fixed;
-    top:0px;
+    height:100%;
     background-color: rgba(0,0,0,0.4);
     min-width: 100%;
     font-family :Futura, "Trebuchet MS", Arial, sans-serif;
