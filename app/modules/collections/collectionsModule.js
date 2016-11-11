@@ -5,6 +5,16 @@ angular.module('library.collections').config(function($stateProvider,$urlRouterP
                 templateUrl:'modules/collections/views/categories.html',
                 controller:'categoriesController'
         });
+        $stateProvider.state('collections.books',{
+                url:'/categories/:id',
+                templateUrl:'modules/collections/views/books.html',
+                controller:'booksController'
+        });
+        $stateProvider.state('collections.bookInfo',{
+                url:'/categories/:id/:permaLink',
+                templateUrl:'modules/collections/views/bookInfo.html',
+                controller:'booksInfoController'
+        });
         $urlRouterProvider.otherwise('/categories');
         $locationProvider.html5Mode(false);
     

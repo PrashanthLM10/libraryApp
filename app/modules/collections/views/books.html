@@ -1,0 +1,16 @@
+<div class="books_parent">
+    <div ng-repeat="book in booksInCollection track by $index" class="book" ng-click="loadBookInfo(book.title,book.bookId,book.category)">
+            <div class="bookCover" ng-style="{'background-image':'url({{book.image}})'}"></div>
+            <div class="bookInfo">
+                <div class="bookName">
+                        {{book.title}}
+                </div>
+                <div class="bookAuthor">
+                    <p>{{book.author}}</p>
+                </div>
+                <div class="bookPages">
+                    <p>{{book.pages}} Pages</p>
+                </div>
+            </div>
+    </div>
+</div>

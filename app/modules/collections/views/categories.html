@@ -1,5 +1,5 @@
 <div ng-controller = "categoriesController" class="categories_parent">
-    <div class="category" ng-repeat = "cat in categories" ng-style="{'height' : '33%','width':'45%','background-image':'url({{cat.image}})','background-size':'cover'}">
+    <div ui-sref="collections.books({id:cat.Category})" class="category" ng-repeat = "cat in categories"  ng-style="{'height' : '33%','width':'45%','background-image':'url({{cat.image}})','background-size':'cover'}">
 
                 <p>{{cat.Category}}</p>
 
