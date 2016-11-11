@@ -4,8 +4,9 @@ var util = require('util'),
     http = require('http'),
     fs = require('fs'),
     url = require('url'),
+    //qs= require('');
     events = require('events');
-    appUrls = ["/collections"];
+    appUrls = ["/collections","/booksForCollection"];
 
 var DEFAULT_PORT = 9898;
 
@@ -54,12 +55,26 @@ HttpServer.prototype.parseUrl_ = function(urlString) {
 };
 
 HttpServer.prototype.handleRequest_ = function(req, res) {
-  if(appUrls.indexOf(req.url) > -1){
+  var d;
+  if (req.method == 'POST' && appUrls.indexOf(req.url) > -1 ) {
+    req.on('data',function(data){
+      d=data;
+    });
+
+    req.on('end',function(){
+      console.log('data',JSON.parse(d.toString('utf8')));
+      d= JSON.parse(d.toString('utf8'));
+      res.writeHead(200,{
+        'Content-Type': 'application/json'
+      });
+      res.write(JSON.stringify(sendResponseToCall(req,d)));
+      res.end();
+    });
+  } else if(appUrls.indexOf(req.url) > -1){
     res.writeHead(200,{
       'Content-Type': 'application/json'
     });
-    console.log("===============================================",sendResponseToCall('/collections'));
-    res.write(JSON.stringify(sendResponseToCall('/collections')));
+    res.write(JSON.stringify(sendResponseToCall(req,d)));
     res.end();
   }else{
     var logEntry = req.method + ' ' + req.url;
@@ -257,12 +272,15 @@ StaticServlet.prototype.writeDirectoryIndex_ = function(req, res, path, files) {
 
 
 //Response to app urls
-function sendResponseToCall(url){
-  switch(url){
-    case "/collections" :;
+function sendResponseToCall(req,d){
+  switch(req.url){
+    case "/collections" :
       return sendBookCollections();
       break;
 
+    case "/booksForCollection" :
+      return sendBooksForCollection(req,d);
+      break;
   }
 }
 
@@ -277,20 +295,29 @@ function sendBookCollections(){
     },{
         Category : 'Fiction',
         image : '../../img/fiction.gif'
-    },{
-        Category : 'Psychology',
-        image : '../../img/LittleWheel-Crane.gif'
-    },{
-        Category : 'Sports',
-        image : '../../img/LittleWheel-Crane.gif'
-    },{
-        Category : 'Medicine',
-        image : '../../img/LittleWheel-Crane.gif'
-    },{
-        Category : 'Law',
-        image : '../../img/LittleWheel-Crane.gif'
     }];
 }
+
+
+function sendBooksForCollection(req,d){
+  return getBooks(d.collection);
+
+}
+
+function getBooks(collection){
+    switch(collection){
+      case "Engineering" :
+        return [{
+          title : "To Engineer Is Human: The Role of Failure in Successful Design (Paperback)",
+          author : "Henry Petroski",
+          pages : 251,
+          image : "../../img/Engineer_1.jpg",
+          bookId: "Engineering_00001",
+          category:"Engineering"
+        }]
+    }
+}
+
 
 
 // Must be last,
