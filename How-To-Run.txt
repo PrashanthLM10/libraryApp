@@ -1,0 +1,14 @@
+
+
+Prerequisites : -
+
+    Node JS
+
+
+How To Run:-
+
+1) To run the applciation, open command prompt and navigate to the "app" folder in the repository.
+
+2) Enter "node ../scripts/web-server.js".
+
+3) Goto "http://localhost:9898/index.html" in your browser.
